@@ -1,3 +1,4 @@
+from __future__ import print_function
 # analysis script for natural viewing experiment
 #
 # version 1 (1 Mar 2014)
@@ -58,7 +59,7 @@ PXPERCM = numpy.mean([DISPSIZE[0]/SCREENSIZE[0],DISPSIZE[1]/SCREENSIZE[1]]) # px
 # loop through all participants
 for ppname in PPS:
 	
-	print("starting data analysis for participant '%s'" % (ppname))
+	print(("starting data analysis for participant '%s'" % (ppname)))
 
 	# BEHAVIOUR
 	print("loading behavioural data")
