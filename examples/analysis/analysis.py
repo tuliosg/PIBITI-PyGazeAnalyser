@@ -58,7 +58,7 @@ PXPERCM = numpy.mean([DISPSIZE[0]/SCREENSIZE[0],DISPSIZE[1]/SCREENSIZE[1]]) # px
 # loop through all participants
 for ppname in PPS:
 	
-	print("starting data analysis for participant '%s'" % (ppname))
+	print(("starting data analysis for participant '%s'" % (ppname)))
 
 	# BEHAVIOUR
 	print("loading behavioural data")
