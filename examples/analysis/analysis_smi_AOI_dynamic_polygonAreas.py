@@ -1,3 +1,5 @@
+from __future__ import print_function
+from __future__ import division
 
 # This script estimate the frequency of fixation/saccades, their duration and latency regarding 
 # a set of poligonal AOI defined on a txt file. The txt have to have the name aoi.txt. 
@@ -22,6 +24,10 @@
 # the text file with the tracker records whichs correspond with the AOI.
 # 
 
+from builtins import str
+from builtins import zip
+from builtins import range
+from past.utils import old_div
 __author__ = "Julian Tejada 2019 adapted from a script of Edwin Dalmaijer"
 
 # native
@@ -80,7 +86,7 @@ INVALCODE = 0.0 # value coding invalid data
 DISPSIZE = (1920,1080) # (px,px)
 SCREENSIZE = (39.9,29.9) # (cm,cm)
 SCREENDIST = 61.0 # cm
-PXPERCM = np.mean([DISPSIZE[0]/SCREENSIZE[0],DISPSIZE[1]/SCREENSIZE[1]]) # px/cm
+PXPERCM = np.mean([old_div(DISPSIZE[0],SCREENSIZE[0]),old_div(DISPSIZE[1],SCREENSIZE[1])]) # px/cm
 
 
 # # # # #
@@ -171,9 +177,9 @@ for trialnr in range(len(edfdata)):
 	   	for j in range(0,df.iloc[area, 0]*2,2):
 	   		Corners_x.append(df.iloc[area,j+1])
 	   		Corners_y.append(df.iloc[area,j+2])
-	   	p = path.Path(zip(Corners_x, Corners_y))
+	   	p = path.Path(list(zip(Corners_x, Corners_y)))
 	   	try:
-	   	    points = p.contains_points(zip(fixations_df['endx'], fixations_df['endy']))	   	
+	   	    points = p.contains_points(list(zip(fixations_df['endx'], fixations_df['endy'])))	   	
 	   	    TempFix = pd.DataFrame(fixations, columns=['starttime', 'endtime', 'duration', 'endx', 'endy'], index = points)
 	   	    TempFix = TempFix.loc[True]
 	   	        ######  AOI - Fixations- stop
@@ -192,7 +198,7 @@ for trialnr in range(len(edfdata)):
 	   	            
 	   	 ######  AOI - Dwell time- stop
 	   	try:
-	   	    points = p.contains_points(zip( dwell_df['x'],  dwell_df['y']))
+	   	    points = p.contains_points(list(zip( dwell_df['x'],  dwell_df['y'])))
 	   	    TempDwell = pd.DataFrame(dwell_df, index = points)
 
 	   	    TempDwell = TempDwell.loc[True]
@@ -206,9 +212,9 @@ for trialnr in range(len(edfdata)):
 	   	           
 	   	 ######  AOI - Saccades Entries
 	   	try:            
-	   	    Points_star = p.contains_points(zip( saccades_df['startx'],  saccades_df['starty']))
+	   	    Points_star = p.contains_points(list(zip( saccades_df['startx'],  saccades_df['starty'])))
 	   	    Points_star = np.invert(Points_star)
-	   	    Points_end = p.contains_points(zip( saccades_df['endx'],  saccades_df['endy']))
+	   	    Points_end = p.contains_points(list(zip( saccades_df['endx'],  saccades_df['endy'])))
 	   	    Points = np.vstack((Points_star, Points_end)).T
 	   	    Entries = Points.all(axis=1)
 	   	    Temp_sac_ent = pd.DataFrame(saccades, columns=['starttime', 'endtime', 'duration', 'startx', 'starty', 'endx', 'endy'], index=Entries)
