@@ -1,3 +1,4 @@
+from __future__ import print_function
 # analysis script for natural viewing experiment
 #
 # version 1 (1 Mar 2014)
@@ -20,18 +21,18 @@ import numpy
 # CONSTANTS
 
 # PARTICIPANTS
-print ("File name: %s" % str(sys.argv[1]))
+print(("File name: %s" % str(sys.argv[1])))
 #PPS = ['RegistroPilotoJulian']
 PPS = [str(sys.argv[1])]
 # DIRECTORIES
 # paths
 # DIR = os.path.dirname(__file__)
 DIR = os.path.dirname(os.path.realpath('__file__'))
-print ("dir: %s" % str(DIR))
+print(("dir: %s" % str(DIR)))
 
 #
 IMGDIR = os.path.join(DIR, 'imgs', str(sys.argv[1]))
-print ("image dir: %s" % str(IMGDIR))
+print(("image dir: %s" % str(IMGDIR)))
 imgname = os.listdir(IMGDIR)
 os.chdir(os.path.join(IMGDIR))
 imgname.sort(key=os.path.getmtime)
@@ -70,7 +71,7 @@ PXPERCM = numpy.mean([DISPSIZE[0]/SCREENSIZE[0],DISPSIZE[1]/SCREENSIZE[1]]) # px
 # loop through all participants
 for ppname in PPS:
 	
-	print("starting data analysis for participant '%s'" % (ppname))
+	print(("starting data analysis for participant '%s'" % (ppname)))
 
 	# BEHAVIOUR
 	print("loading behavioural data")
@@ -142,8 +143,8 @@ for ppname in PPS:
 #			continue
 #		imgname = data[trialnr][header.index("Stimulus")]
 		#imgname = "ConfiguracionExperimentoConsumidor3.png"
-		print("imagename '%s'" % imgname )
-		print("trialnr '%i'" % trialnr )
+		print(("imagename '%s'" % imgname ))
+		print(("trialnr '%i'" % trialnr ))
 		#'L Event Info' in edfdata
 		saccades = edfdata[trialnr]['events']['Esac']
 		# [starttime, endtime, duration, startx, starty, endx, endy]
