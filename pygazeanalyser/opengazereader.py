@@ -35,6 +35,9 @@
 #
 # version 1 (20-Jun-2017)
 
+from __future__ import print_function
+from __future__ import absolute_import
+from builtins import range
 __author__ = "Edwin Dalmaijer"
 
 
@@ -43,7 +46,7 @@ import os.path
 
 import numpy
 
-from detectors import blink_detection, fixation_detection, saccade_detection
+from .detectors import blink_detection, fixation_detection, saccade_detection
 
 
 def read_opengaze(filename, start, stop=None, missing=0.0, debug=False):

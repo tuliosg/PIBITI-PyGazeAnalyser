@@ -1,5 +1,8 @@
+from __future__ import division
 # PyeNalysis
 
+from builtins import range
+from past.utils import old_div
 __author__ = "Edwin Dalmaijer"
 
 
@@ -471,7 +474,7 @@ def hampel(signal, winlen=12, T=3, focus='centre'):
 	
 	if focus == 'centre':
 		# half a window length
-		hampwinlen = winlen/2
+		hampwinlen = old_div(winlen,2)
 		for i in range(hampwinlen, len(signal)-hampwinlen+1):
 			# median for this window
 			med = numpy.median(signal[i-hampwinlen:i+hampwinlen])
@@ -492,8 +495,8 @@ def hampel(signal, winlen=12, T=3, focus='centre'):
 			start = winlen
 			stop = len(signal)
 		else:
-			start = winlen/2
-			stop = len(signal) - winlen/2 + 1
+			start = old_div(winlen,2)
+			stop = len(signal) - old_div(winlen,2) + 1
 		# loop through samples
 		for i in range(start, stop):
 			# determine window start and stop
@@ -504,8 +507,8 @@ def hampel(signal, winlen=12, T=3, focus='centre'):
 				wstart = i - winlen
 				wstop = i
 			else:
-				wstart = i - winlen/2
-				wstop = i + winlen/2
+				wstart = i - old_div(winlen,2)
+				wstop = i + old_div(winlen,2)
 			# median for this window
 			med = numpy.median(signal[wstart:wstop])
 			# check S0 (standard deviation like measure)
@@ -583,11 +586,11 @@ def smooth(signal, winlen=11, window='hanning', lencorrect=True):
 		w = eval("numpy.%s(%d)" % (window,winlen))
 	
 	# convolve signal, according to chosen smoothing type
-	smoothed = numpy.convolve(w/w.sum(), s, mode='valid')
+	smoothed = numpy.convolve(old_div(w,w.sum()), s, mode='valid')
 	
 	# correct length if necessary
 	if lencorrect:
-		smoothed = smoothed[(winlen/2-1):(-winlen/2)]
+		smoothed = smoothed[(old_div(winlen,2)-1):(old_div(-winlen,2))]
 		try:
 			smoothed = smoothed[:len(signal)]
 		except:
