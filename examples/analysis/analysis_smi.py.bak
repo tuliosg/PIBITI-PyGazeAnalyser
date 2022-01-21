@@ -1,7 +1,11 @@
 from __future__ import print_function
+from __future__ import division
 # analysis script for natural viewing experiment
 #
 # version 1 (1 Mar 2014)
+from builtins import str
+from builtins import range
+from past.utils import old_div
 __author__ = "Edwin Dalmaijer"
 
 # native
@@ -62,7 +66,7 @@ INVALCODE = 0.0 # value coding invalid data
 DISPSIZE = (1920,1080) # (px,px)
 SCREENSIZE = (39.9,29.9) # (cm,cm)
 SCREENDIST = 61.0 # cm
-PXPERCM = numpy.mean([DISPSIZE[0]/SCREENSIZE[0],DISPSIZE[1]/SCREENSIZE[1]]) # px/cm
+PXPERCM = numpy.mean([old_div(DISPSIZE[0],SCREENSIZE[0]),old_div(DISPSIZE[1],SCREENSIZE[1])]) # px/cm
 
 
 # # # # #

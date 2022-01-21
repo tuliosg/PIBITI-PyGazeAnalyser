@@ -1,5 +1,6 @@
 from __future__ import print_function
 from __future__ import division
+from __future__ import absolute_import
 
 # This script estimate the frequency of fixation/saccades, their duration and latency regarding 
 # a set of poligonal AOI defined on a txt file. The txt have to have the name aoi.txt. 
