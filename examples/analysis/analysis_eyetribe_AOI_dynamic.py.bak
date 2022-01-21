@@ -1,5 +1,6 @@
 from __future__ import print_function
 from __future__ import division
+from __future__ import absolute_import
 # analysis script for natural viewing experiment
 #
 # version 1 (1 Mar 2014)

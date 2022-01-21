@@ -35,6 +35,9 @@
 #
 # version 1 (01-Jul-2014)
 
+from __future__ import division
+from builtins import range
+from past.utils import old_div
 __author__ = "Edwin Dalmaijer"
 
 import numpy
@@ -203,7 +206,7 @@ def saccade_detection(x, y, time, missing=0.0, minlen=5, maxvel=40, maxacc=340):
 	# VELOCITY AND ACCELERATION
 	# the velocity between samples is the inter-sample distance
 	# divided by the inter-sample time
-	vel = intdist / inttime
+	vel = old_div(intdist, inttime)
 	# the acceleration is the sample-to-sample difference in
 	# eye movement velocity
 	acc = numpy.diff(vel)

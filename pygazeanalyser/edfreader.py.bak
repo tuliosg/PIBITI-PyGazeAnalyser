@@ -1,4 +1,5 @@
 from __future__ import print_function
+from __future__ import division
 # EDF Reader
 #
 # Does not actually read EDFs directly, but the ASC files that are produced
@@ -14,6 +15,8 @@ from __future__ import print_function
 #
 # version 2 (24-Apr-2014)
 
+from builtins import range
+from past.utils import old_div
 __author__ = "Edwin Dalmaijer"
 
 
@@ -297,9 +300,9 @@ if __name__ == "__main__":
 		x[:len(data[i]['x'])] = x[:len(data[i]['x'])] + data[i]['x']
 		y[:len(data[i]['y'])] = y[:len(data[i]['y'])] + data[i]['y']
 		y[:len(data[i]['size'])] = y[:len(data[i]['size'])] + data[i]['size']
-	x = x/len(data)
-	y = y/len(data)
-	size = size/len(data)
+	x = old_div(x,len(data))
+	y = old_div(y,len(data))
+	size = old_div(size,len(data))
 	
 	from matplotlib import pyplot
 	pyplot.figure()
