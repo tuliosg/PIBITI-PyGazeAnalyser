@@ -31,6 +31,7 @@ from __future__ import division
 from __future__ import absolute_import
 from __future__ import unicode_literals
 from future import standard_library
+from six.moves import range
 standard_library.install_aliases()
 from builtins import *
 from builtins import str

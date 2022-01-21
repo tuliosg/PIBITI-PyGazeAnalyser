@@ -1,6 +1,7 @@
 from __future__ import print_function
 from __future__ import division
 from __future__ import absolute_import
+from __future__ import unicode_literals
 # analysis script for natural viewing experiment
 #
 # version 1 (1 Mar 2014)
@@ -30,6 +31,9 @@ from __future__ import absolute_import
 # the text file with the tracker records whichs correspond with the AOI.
 # 
 
+from future import standard_library
+standard_library.install_aliases()
+from builtins import *
 from builtins import str
 from builtins import range
 from past.utils import old_div

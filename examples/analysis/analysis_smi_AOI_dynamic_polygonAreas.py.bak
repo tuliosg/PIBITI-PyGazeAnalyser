@@ -1,6 +1,7 @@
 from __future__ import print_function
 from __future__ import division
 from __future__ import absolute_import
+from __future__ import unicode_literals
 
 # This script estimate the frequency of fixation/saccades, their duration and latency regarding 
 # a set of poligonal AOI defined on a txt file. The txt have to have the name aoi.txt. 
@@ -25,6 +26,9 @@ from __future__ import absolute_import
 # the text file with the tracker records whichs correspond with the AOI.
 # 
 
+from future import standard_library
+standard_library.install_aliases()
+from builtins import *
 from builtins import str
 from builtins import zip
 from builtins import range

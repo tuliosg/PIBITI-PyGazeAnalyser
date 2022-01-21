@@ -7,6 +7,7 @@ from __future__ import unicode_literals
 # version 1 (1 Mar 2014)
 
 from future import standard_library
+from six.moves import range
 standard_library.install_aliases()
 from builtins import *
 from builtins import str
