@@ -180,3 +180,6 @@ for ppname in PPS:
 
 		# heatmap		
 		draw_heatmap(fixations, DISPSIZE, imagefile=imagefile, durationweight=True, alpha=0.5, savefilename=heatmapfile)
+
+		print(saccades)
+		print(fixations)
