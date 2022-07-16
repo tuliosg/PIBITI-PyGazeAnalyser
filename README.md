@@ -1,2 +1,2 @@
 ## PyGaze Analyser
- Porabilidade do código do Python 2 para Python 3
+ Portabilidade do código do PyGaze Analyser de Python 2 para Python 3
